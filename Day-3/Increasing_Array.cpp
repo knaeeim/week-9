@@ -24,34 +24,22 @@ int main()
     cin.tie(NULL); 
     
 
-    int t; cin>>t; 
+    int n; cin>>n; 
 
-    while(t--){
-        int n; cin>>n; 
+    vi v(n); 
 
-        vi v(n); 
+    for(int i = 0; i < n; i++) cin>>v[i]; 
 
-        int minus1s = 0, plus1s = 0;
+    ll op = 0; 
 
-        for(int i  = 0; i < n; i++){
-            cin>>v[i]; 
-            if(v[i] == -1 ) minus1s++;
-            else plus1s++;
+    for(int i  = 0; i < n - 1; i++){
+        if(v[i] > v[i+1]){
+            op += (v[i] - v[i+1]);
+            v[i+1] = v[i]; 
         }
-
-        int ans = 0;
-
-        while(minus1s > plus1s){
-            minus1s--;
-            plus1s++;
-            ans++;
-        }
-
-        if(minus1s % 2== 1){
-            ans++;
-        }
-
-        cout << ans << endl; 
     }
+
+    cout << op << endl; 
+
     return 0; 
 }

@@ -1,5 +1,7 @@
+*.exe
 *.cph
 *.vscode
-*.txt
 *.bin
-*.exe
+temp/
+input.txt
+output.txt

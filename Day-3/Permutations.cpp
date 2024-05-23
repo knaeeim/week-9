@@ -24,34 +24,42 @@ int main()
     cin.tie(NULL); 
     
 
-    int t; cin>>t; 
+    int n; cin>>n; 
 
-    while(t--){
-        int n; cin>>n; 
+    vi ans; 
 
-        vi v(n); 
-
-        int minus1s = 0, plus1s = 0;
-
-        for(int i  = 0; i < n; i++){
-            cin>>v[i]; 
-            if(v[i] == -1 ) minus1s++;
-            else plus1s++;
-        }
-
-        int ans = 0;
-
-        while(minus1s > plus1s){
-            minus1s--;
-            plus1s++;
-            ans++;
-        }
-
-        if(minus1s % 2== 1){
-            ans++;
-        }
-
-        cout << ans << endl; 
+    if(n <= 3 and n > 1){
+        cout << "NO SOLUTION" << endl;
+        return 0;
     }
+
+    int i = 1, j = 2; 
+    int f = 1;
+
+    if(n % 2 == 0){
+        while(j <= n){
+            ans.pub(j);
+            j+=2;
+        }
+
+        while(i <= n){
+            ans.pub(i);
+            i+=2;
+        }
+    }
+    else{
+        while(i <= n){
+            ans.pub(i);
+            i+=2;
+        }
+
+        while(j <= n){
+            ans.pub(j);
+            j+=2;
+        }
+    }
+
+    range(ans); 
+
     return 0; 
 }

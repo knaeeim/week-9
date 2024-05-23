@@ -27,31 +27,15 @@ int main()
     int t; cin>>t; 
 
     while(t--){
-        int n; cin>>n; 
+        ll x, y; 
+        cin>>x>>y; 
 
-        vi v(n); 
+        if( x > y) swap(x, y);
 
-        int minus1s = 0, plus1s = 0;
+        ll sum = x + y;
 
-        for(int i  = 0; i < n; i++){
-            cin>>v[i]; 
-            if(v[i] == -1 ) minus1s++;
-            else plus1s++;
-        }
-
-        int ans = 0;
-
-        while(minus1s > plus1s){
-            minus1s--;
-            plus1s++;
-            ans++;
-        }
-
-        if(minus1s % 2== 1){
-            ans++;
-        }
-
-        cout << ans << endl; 
+        if(2 * x >= y  and sum % 3 == 0) yes;
+        else no;  
     }
     return 0; 
 }

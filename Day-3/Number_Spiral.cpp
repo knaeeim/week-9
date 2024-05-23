@@ -27,31 +27,33 @@ int main()
     int t; cin>>t; 
 
     while(t--){
-        int n; cin>>n; 
+        ll x, y; 
+        cin>>x>>y; 
 
-        vi v(n); 
+        if(x > y){
+            ll ans = 0;
+            if(x % 2 != 0){
+                ans = ((x-1) * (x-1)) + y; 
+            }
+            else{
+                ans = (x * x) - y + 1;
+            }
 
-        int minus1s = 0, plus1s = 0;
-
-        for(int i  = 0; i < n; i++){
-            cin>>v[i]; 
-            if(v[i] == -1 ) minus1s++;
-            else plus1s++;
+            cout << ans << endl;
         }
+        else{
+            ll ans  = 0;
 
-        int ans = 0;
+            if(y % 2 != 0){
+                ans = (y*y) - x + 1;
+            }
+            else{
+                ans =((y - 1 ) * (y - 1)) + x; 
+            }
 
-        while(minus1s > plus1s){
-            minus1s--;
-            plus1s++;
-            ans++;
+            cout << ans << endl; 
         }
-
-        if(minus1s % 2== 1){
-            ans++;
-        }
-
-        cout << ans << endl; 
     }
+
     return 0; 
 }
