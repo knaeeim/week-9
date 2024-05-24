@@ -24,45 +24,33 @@ int main()
     cin.tie(NULL); 
     
 
-    string s; cin>>s; 
+    int t; cin>>t; 
 
-    map<char, int> mp; 
+    while(t--){
+        int n; cin>>n; 
 
-    char ch;
+        vi v(n); 
+        map<int, int> mp;
 
-    for(char c: s){ 
-        mp[c]++;
-    }
-
-    int cnt = 0; 
-
-    for(auto [x,y] : mp){
-        if(y % 2){
-            ch = x;
-            cnt++;
+        for(int i = 0; i < n; i++){
+            cin>>v[i];
+            mp[v[i]]++;
         }
-    }
 
-    if((s.size() % 2 == 0 and cnt > 0) or cnt > 1){
-        cout << "NO SOLUTION" << endl;
-    }
-    else{
-        string ans = "";
-
-        for(auto [x,y] : mp){
-            for(int i =0; i < y/2; i++){
-                ans +=x;
+        sorta(v);
+        vll noduplicate; 
+        int last = 0;
+        for(int i = 0; i < n+2; i++){
+            if(mp[i] == 0){
+                last = i;
+                break;
             }
+            else if(mp[i] == 1) noduplicate.pub(i);
         }
 
-        cout << ans;
+        if(noduplicate.size() == 0 or noduplicate.size() == 1) cout << last << endl;
+        else cout << noduplicate[1] << endl; 
 
-        if(s.size() & 1){
-            cout<<ch;
-        }
-
-        reverse(ans.begin(), ans.end());
-        cout << ans;
     }
     return 0; 
 }

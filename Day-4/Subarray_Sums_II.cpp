@@ -24,45 +24,23 @@ int main()
     cin.tie(NULL); 
     
 
-    string s; cin>>s; 
+    ll n, x; 
+    cin>>n>>x; 
 
-    map<char, int> mp; 
+    map <ll, ll> mp; 
 
-    char ch;
+    ll sum = 0, cnt = 0; 
 
-    for(char c: s){ 
-        mp[c]++;
+    mp[sum]++; 
+
+    for(int i = 0; i < n; i++){
+        ll x1; cin>>x1; 
+        sum +=x1; 
+        cnt += mp[sum - x];
+        mp[sum]++;
     }
 
-    int cnt = 0; 
+    cout << cnt << endl;
 
-    for(auto [x,y] : mp){
-        if(y % 2){
-            ch = x;
-            cnt++;
-        }
-    }
-
-    if((s.size() % 2 == 0 and cnt > 0) or cnt > 1){
-        cout << "NO SOLUTION" << endl;
-    }
-    else{
-        string ans = "";
-
-        for(auto [x,y] : mp){
-            for(int i =0; i < y/2; i++){
-                ans +=x;
-            }
-        }
-
-        cout << ans;
-
-        if(s.size() & 1){
-            cout<<ch;
-        }
-
-        reverse(ans.begin(), ans.end());
-        cout << ans;
-    }
     return 0; 
 }
